@@ -28,7 +28,7 @@ const ForgotPassword = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('http://localhost:5005/username/forgot-password', {
+      const response = await axios.post('https://password-reset-backend-u71u.onrender.com/username/forgot-password', {
         email: email
       });
 
