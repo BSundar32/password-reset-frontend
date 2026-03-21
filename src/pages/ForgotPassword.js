@@ -97,7 +97,7 @@ const ForgotPassword = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="/login" className="text-decoration-none fw-bold">Sign In</a>
+                    Remember your password? <a href="https://password-reset-backend-u71u.onrender.com/username/login" className="text-decoration-none fw-bold">Sign In</a>
                   </p>
                 </div>
               </Card.Body>
