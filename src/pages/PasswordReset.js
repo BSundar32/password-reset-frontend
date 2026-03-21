@@ -59,10 +59,9 @@ const PasswordReset = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post(`http://localhost:5005/username/reset-password`, {
+      await axios.post(`https://password-reset-backend-u71u.onrender.com/username/reset-password`, {
         newPassword: formData.password,
         resetToken: token
-        // confirmPassword: formData.confirmPassword
       });
 
       setMessage('Password has been reset successfully!');
