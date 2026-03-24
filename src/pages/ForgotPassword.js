@@ -28,7 +28,7 @@ const ForgotPassword = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('https://password-reset-backend-u71u.onrender.com/username/forgot-password', {
+      const response = await axios.post('https://password-reset-backend-1-43mx.onrender.com/username/forgot-password', {
         email: email
       });
 
@@ -97,7 +97,7 @@ const ForgotPassword = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="https://password-reset-backend-u71u.onrender.com/username/login" className="text-decoration-none fw-bold">Sign In</a>
+                    Remember your password? <a href="https://passwordreset-fe.netlify.app/login" className="text-decoration-none fw-bold">Sign In</a>
                   </p>
                 </div>
               </Card.Body>

@@ -37,7 +37,7 @@ const Login = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('https://password-reset-backend-u71u.onrender.com/username/login', {
+      const response = await axios.post('https://password-reset-backend-1-43mx.onrender.com/username/login', {
         email: email,
         password: password
       });
@@ -121,7 +121,7 @@ const Login = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Forgot your password? <a href="https://password-reset-backend-u71u.onrender.com/username/forgot-password" className="text-decoration-none fw-bold">Reset it here</a>
+                    Forgot your password? <a href="https://passwordreset-fe.netlify.app/forgot-password" className="text-decoration-none fw-bold">Reset it here</a>
                   </p>
                 </div>
               </Card.Body>
