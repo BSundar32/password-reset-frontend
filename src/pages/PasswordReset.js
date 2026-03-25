@@ -173,7 +173,7 @@ const PasswordReset = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="/login" className="text-decoration-none fw-bold">Sign In</a>
+                    Remember your password? <a href="https://pass-res.netlify.app/login" className="text-decoration-none fw-bold">Sign In</a>
                   </p>
                 </div>
               </Card.Body>
