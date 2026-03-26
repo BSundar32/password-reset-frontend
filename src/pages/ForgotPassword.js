@@ -97,7 +97,7 @@ const ForgotPassword = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="/login" className="text-decoration-none fw-bold">Sign In</a>
+                    Remember your password? <a href="/addUser" className="text-decoration-none fw-bold">Add User</a>
                   </p>
                 </div>
               </Card.Body>

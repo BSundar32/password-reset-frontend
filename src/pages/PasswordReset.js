@@ -69,7 +69,7 @@ const PasswordReset = () => {
 
       // Redirect to login after 2 seconds
       setTimeout(() => {
-        navigate('/login');
+        navigate('/addUser');
       }, 2000);
     } catch (err) {
       if (err.response && err.response.data) {
@@ -173,7 +173,7 @@ const PasswordReset = () => {
 
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="https://pass-res.netlify.app/login" className="text-decoration-none fw-bold">Sign In</a>
+                    Remember your password? <a href="/addUser" className="text-decoration-none fw-bold">Add User</a>
                   </p>
                 </div>
               </Card.Body>

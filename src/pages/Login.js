@@ -43,6 +43,8 @@ const Login = () => {
       });
 
       setMessage(response.data.message || 'User added successfully!');
+      setEmail('');
+      setPassword('');
     } catch (err) {
       if (err.response && err.response.data) {
         setError(err.response.data.message || 'Failed to add user. Please try again.');
@@ -61,7 +63,7 @@ const Login = () => {
           <Col md={5} sm={8} xs={12}>
             <Card className="auth-card">
               <Card.Body className="p-5">
-                <h2 className="text-center mb-4 fw-bold">Sign In</h2>
+                <h2 className="text-center mb-4 fw-bold">Add User</h2>
                 
                 {message && (
                   <Alert variant="success" className="alert-custom" dismissible onClose={() => setMessage('')}>
