@@ -37,15 +37,15 @@ const Login = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/login', {
+      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/addUser', {
         email: email,
         password: password
       });
 
-      setMessage(response.data.message || 'Login successful!');
+      setMessage(response.data.message || 'User added successfully!');
     } catch (err) {
       if (err.response && err.response.data) {
-        setError(err.response.data.message || 'Login failed. Please try again.');
+        setError(err.response.data.message || 'Failed to add user. Please try again.');
       } else {
         setError('Unable to connect to the server. Please try again later.');
       }
@@ -115,7 +115,7 @@ const Login = () => {
                     disabled={loading}
                     size="lg"
                   >
-                    {loading ? 'Signing In...' : 'Sign In'}
+                    {loading ? 'Adding User...' : 'Add User'}
                   </Button>
                 </Form>
 
