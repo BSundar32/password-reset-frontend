@@ -116,7 +116,7 @@ const Register = () => {
                 </Form>
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Forgot your password? <a href="/forgot-password" className="text-decoration-none fw-bold">Reset it here</a>
+                    Already have an account? <a href="/" className="text-decoration-none fw-bold">Sign in here</a>
                   </p>
                 </div>
               </Card.Body>
