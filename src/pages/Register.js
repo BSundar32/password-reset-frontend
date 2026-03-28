@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
-const ForgotPassword = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    setEmail(e.target.value);
+    const { name, value } = e.target;
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
   };
 
   const handleSubmit = async (e) => {
@@ -17,8 +20,8 @@ const ForgotPassword = () => {
     setLoading(true);
     setMessage('');
     setError('');
-    console.log('Submitting email for password reset:', email);
-    // Email validation
+
+    // Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address');
@@ -26,17 +29,25 @@ const ForgotPassword = () => {
       return;
     }
 
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      setLoading(false);
+      return;
+    }
+
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/forgot-password', {
-        email: email
+      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/addUser', {
+        email: email,
+        password: password
       });
 
-      setMessage(response.data.message || 'Password reset link has been sent to your email');
+      setMessage(response.data.message || 'User added successfully!');
       setEmail('');
+      setPassword('');
     } catch (err) {
       if (err.response && err.response.data) {
-        setError(err.response.data.message || 'An error occurred. Please try again.');
+        setError(err.response.data.message || 'Failed to add user. Please try again.');
       } else {
         setError('Unable to connect to the server. Please try again later.');
       }
@@ -52,29 +63,26 @@ const ForgotPassword = () => {
           <Col md={5} sm={8} xs={12}>
             <Card className="auth-card">
               <Card.Body className="p-5">
-                <h2 className="text-center mb-4 fw-bold">Forgot Password</h2>
-                
+                <h2 className="text-center mb-4 fw-bold">Register</h2>
                 {message && (
                   <Alert variant="success" className="alert-custom" dismissible onClose={() => setMessage('')}>
                     {message}
                   </Alert>
                 )}
-                
                 {error && (
                   <Alert variant="danger" className="alert-custom" dismissible onClose={() => setError('')}>
                     {error}
                   </Alert>
                 )}
-
                 <p className="text-muted-custom text-center mb-4">
-                  Enter your email address and we'll send you a link to reset your password.
+                  Enter your credentials to register a new account.
                 </p>
-
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-4">
                     <Form.Label className="fw-600">Email Address</Form.Label>
                     <Form.Control
                       type="email"
+                      name="email"
                       placeholder="Enter your email"
                       value={email}
                       onChange={handleChange}
@@ -83,7 +91,19 @@ const ForgotPassword = () => {
                       required
                     />
                   </Form.Group>
-
+                  <Form.Group className="mb-4">
+                    <Form.Label className="fw-600">Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={handleChange}
+                      disabled={loading}
+                      size="lg"
+                      required
+                    />
+                  </Form.Group>
                   <Button
                     variant="primary"
                     className="btn-custom w-100"
@@ -91,13 +111,12 @@ const ForgotPassword = () => {
                     disabled={loading}
                     size="lg"
                   >
-                    {loading ? 'Sending...' : 'Send Reset Link'}
+                    {loading ? 'Registering...' : 'Register'}
                   </Button>
                 </Form>
-
                 <div className="text-center mt-4">
                   <p className="text-muted-custom">
-                    Remember your password? <a href="/" className="text-decoration-none fw-bold">Login</a>
+                    Forgot your password? <a href="/forgot-password" className="text-decoration-none fw-bold">Reset it here</a>
                   </p>
                 </div>
               </Card.Body>
@@ -109,4 +128,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default Register;

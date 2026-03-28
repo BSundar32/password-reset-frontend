@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -37,12 +38,12 @@ const Login = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/addUser', {
+      const response = await axios.post('https://password-reset-backend-2-9gqa.onrender.com/username/login', {
         email: email,
         password: password
       });
 
-      setMessage(response.data.message || 'User added successfully!');
+      setMessage(response.data.message || 'Login successful!');
       setEmail('');
       setPassword('');
     } catch (err) {
@@ -63,7 +64,7 @@ const Login = () => {
           <Col md={5} sm={8} xs={12}>
             <Card className="auth-card">
               <Card.Body className="p-5">
-                <h2 className="text-center mb-4 fw-bold">Add User</h2>
+                <h2 className="text-center mb-4 fw-bold">Login</h2>
                 
                 {message && (
                   <Alert variant="success" className="alert-custom" dismissible onClose={() => setMessage('')}>
@@ -117,13 +118,18 @@ const Login = () => {
                     disabled={loading}
                     size="lg"
                   >
-                    {loading ? 'Adding User...' : 'Add User'}
+                    {loading ? 'Logging in...' : 'Login'}
                   </Button>
                 </Form>
 
                 <div className="text-center mt-4">
+                  <p className="text-muted-custom mb-2">
+                    Forgot your password?{' '}
+                    <Link to="/forgot-password" className="text-decoration-none fw-bold">Reset it here</Link>
+                  </p>
                   <p className="text-muted-custom">
-                    Forgot your password? <a href="/forgot-password" className="text-decoration-none fw-bold">Reset it here</a>
+                    Don't have an account?{' '}
+                    <Link to="/register" className="text-decoration-none fw-bold">Register</Link>
                   </p>
                 </div>
               </Card.Body>
